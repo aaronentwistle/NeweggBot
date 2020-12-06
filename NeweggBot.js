@@ -85,11 +85,6 @@ async function run() {
 
 		try {
 
-			if (timeDiffMinutes >= 15) {
-				await report("OUT OF TIME")
-						await browser.close()
-						return run();
-			}
 	
 			if (page.url().includes("areyouahuman")) {
 				await page.waitForTimeout(1000)

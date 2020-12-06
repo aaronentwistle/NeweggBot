@@ -60,6 +60,11 @@ async function run() {
 				} 
 				catch (err) {
 					report("Manual authorization code required by Newegg.")
+					while (page.url().includes('signin'))
+					{
+						await page.waitForTimeout(500)
+					}
+					break
 				}
 			}		
 		}

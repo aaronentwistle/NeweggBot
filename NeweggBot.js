@@ -21,6 +21,7 @@ async function run() {
 			defaultViewport: { width: 1500, height: 768 }
 		})
 	const page = await browser.newPage()
+	await page.setUserAgent('Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.67 Mobile Safari/537.36 Edg/87.0.664.55');
 	await page.setCacheEnabled(false);
 	
 	var verificationPage = false;
@@ -110,12 +111,13 @@ async function run() {
 					}
 				}
 			} catch(err) {}
-	
+			
 			nowTime = new Date();
 			timeDiffMinutes = Math.round((nowTime - startTime) / 1000) / 60;
+			await page.waitForTimeout(config.refresh_time * 1000)
 
 		} catch(err) {
-			await report("Strang new error")
+			await report("Strange new error")
 		}
 	}
 
